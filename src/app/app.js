@@ -50,6 +50,7 @@ export class MyApp {
     }
 
     setVideo(video) {
+        video.setAttribute('playsinline', '');
         navigator.mediaDevices.getUserMedia({
             video: true,
             audio: false,
@@ -65,6 +66,7 @@ export class MyApp {
                 video.width = video.srcObject.getVideoTracks()[0].getSettings().width;
                 video.height = video.srcObject.getVideoTracks()[0].getSettings().height;
             }
+            video.loadedmetadata = true;
             this.init();
         })
     }
